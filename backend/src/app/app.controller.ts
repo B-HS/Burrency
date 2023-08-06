@@ -9,4 +9,9 @@ export class AppController {
     getLast() {
         return this.appService.findLastOne();
     }
+
+    @Get('/range/:num')
+    getRangeDate(@Param() { num }: { num: string }) {
+        return this.appService.findAllByAmountOfDay({ num })
+    }
 }

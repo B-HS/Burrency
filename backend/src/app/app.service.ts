@@ -1,7 +1,8 @@
 import { Injectable } from '@nestjs/common'
 import { InjectRepository } from '@nestjs/typeorm';
 import { Currency } from './entity/currency.entity';
-import { Repository } from 'typeorm';
+import { Between, Repository } from 'typeorm';
+import dayjs from 'dayjs';
 
 @Injectable()
 export class AppService {
@@ -20,9 +21,19 @@ export class AppService {
     }
 
     findAllByAmountOfDay({ num }: { num: string }) {
-        if (Number.isInteger(Number(num))) {
-            return this.currencyRepository.find({ take: Number(num) })
-        }
-        return { state: false }
+        const startDate = new Date()
+        const endDate = new Date()
+        startDate.setDate(startDate.getDate() - parseInt(num));
+        endDate.setDate(endDate.getDate() + 10);
+        return this.currencyRepository.createQueryBuilder('entity')
+            .where('entity.insertDt BETWEEN :startDate AND :endDate', {
+                startDate: startDate.toISOString(),
+                endDate: endDate.toISOString(),
+            })
+            .orderBy('entity.insertDt', 'DESC')
+            .groupBy("strftime('%Y', entity.insertDt)")
+            .groupBy("strftime('%m', entity.insertDt)")
+            .groupBy("strftime('%d', entity.insertDt)")
+            .getMany()
     }
 }
