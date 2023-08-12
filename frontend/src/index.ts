@@ -25,6 +25,10 @@ const getCurrency = async () => {
     result = ` JPY ${data[0]['JPY']}  |  USD ${data[0]['USD']} `
 }
 
+app.on('ready', ()=>{
+    
+})
+
 menu.on('ready', () => {
     setInterval(() => {
         getCurrency()
