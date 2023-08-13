@@ -17,6 +17,8 @@ import Github from './styles/Github';
 const App = () => {
     const theme = extendTheme({ ...borderRadius })
     const [currencyInfo, setCurrencyInfo] = useState()
+
+
     ChartJS.register(
         CategoryScale,
         LinearScale,
