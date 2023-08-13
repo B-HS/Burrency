@@ -14,11 +14,16 @@ import React, { useState } from 'react';
 import { Line } from 'react-chartjs-2';
 import { borderRadius } from './styles/ChakraTheme';
 import Github from './styles/Github';
+import { AppControllerProps } from './module/Bridge';
+
+declare global {
+    interface Window {
+        app: AppControllerProps;
+    }
+}
 const App = () => {
     const theme = extendTheme({ ...borderRadius })
     const [currencyInfo, setCurrencyInfo] = useState()
-
-
     ChartJS.register(
         CategoryScale,
         LinearScale,
@@ -28,6 +33,7 @@ const App = () => {
         Tooltip,
         Legend
     );
+
 
     const options = {
         responsive: true,
@@ -75,8 +81,8 @@ const App = () => {
             <Flex justify={'space-between'} align={'center'} p={3}>
                 <Text>Burrency</Text>
                 <Flex alignContent={'center'} gap={2}>
-                    <ViewOffIcon />
-                    <CloseIcon ml={2} viewBox='0 0 25 25' />
+                    <ViewOffIcon onClick={() => window.app.hide()} />
+                    <CloseIcon ml={2} viewBox='0 0 25 25' onClick={() => window.app.close()} />
                 </Flex>
             </Flex>
             <Divider />
@@ -85,11 +91,7 @@ const App = () => {
             </Card>
             <Divider />
             <Flex gap={2} justify={'flex-end'} align={'center'} p={3}>
-                <Text>B-HS</Text>
-                <Flex alignContent={'center'} gap={2}>
-                    <Github />
-                    {currencyInfo}
-                </Flex>
+                <Github fn={() => window.app.github()} name="B-HS" />
             </Flex>
         </ChakraProvider>
     )
