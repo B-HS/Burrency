@@ -1,11 +1,25 @@
 import axios from "axios";
 import { BrowserWindow, Menu, Tray, ipcMain, nativeImage } from "electron";
+import { getListConfiguration } from "./Store";
 
-let result = `JPY Loading.. | USD Loading..`;
+let result = ` Loading...`;
 const getCurrency = () => {
     axios.get('http://localhost:3000/last').then(res => {
         const data = res.data
-        result = ` JPY ${data[0]['JPY']}  |  USD ${data[0]['USD']} `;
+        const savedList = getListConfiguration()
+
+        if (savedList.length > 0) {
+            const text = savedList.map((val) => {
+                if (data[0][val]) {
+                    return `${val} ${data[0][val]}`
+                }
+                return `${val}: 0`
+            })
+            result = ` ${text.join(" | ")}`
+        }
+        else {
+            result = ` Please set the target currencies.`;
+        }
     })
 };
 export const TrayEvent = (win: BrowserWindow) => {
