@@ -5,7 +5,7 @@ const SqlConfig = () => TypeOrmModule.forRoot({
     database: 'burrency.db',
     autoLoadEntities: true,
     synchronize: true,
-    logging: true
+    logging: true,
 })
 
 export default SqlConfig

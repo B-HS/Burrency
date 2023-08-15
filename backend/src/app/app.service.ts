@@ -1,15 +1,15 @@
-import { Injectable } from '@nestjs/common'
+import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
+import { ContriesList } from 'src/task/parseUtil';
+import { Repository } from 'typeorm';
 import { Currency } from './entity/currency.entity';
-import { Between, Repository } from 'typeorm';
-import dayjs from 'dayjs';
 
 @Injectable()
 export class AppService {
     constructor(@InjectRepository(Currency) private readonly currencyRepository: Repository<Currency>) { }
 
-    create(code: string, USD: number, JPY: number) {
-        return this.currencyRepository.save({ code, KRW: 1000, USD, JPY })
+    create(code: string, curs: ContriesList) {
+        return this.currencyRepository.save({ code, KRW: 1000, ...curs })
     }
 
     findOne(cid: number) {

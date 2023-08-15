@@ -2,7 +2,7 @@ import { Inject, Injectable, Logger } from '@nestjs/common';
 import { Cron, CronExpression } from '@nestjs/schedule';
 import axios from 'axios';
 import { AppService } from 'src/app/app.service';
-import { parseHTML } from './parseUtil';
+import { ContriesList, parseHTML } from './parseUtil';
 
 export interface currencyAxios {
     meta: { last_updated_at: string };
@@ -21,16 +21,14 @@ export class TasksService {
     @Inject(AppService)
     private readonly appService: AppService;
 
-    @Cron(CronExpression.EVERY_MINUTE)
+    @Cron(CronExpression.EVERY_5_SECONDS)
     async handleCron() {
         try {
             const { data } = await axios.get('https://finance.naver.com/marketindex/exchangeList.naver')
-            const { USD, JPY } = parseHTML(data)
-            this.appService.create('SUCCESS', USD, JPY)
+            this.appService.create('SUCCESS', parseHTML(data))
         } catch (error) {
             const result = await this.appService.findLastOne()
-            const { JPY, USD } = result[0]
-            this.appService.create('ERROR', USD, JPY)
+            this.appService.create('ERROR', result[0] as ContriesList)
         }
     }
 }
