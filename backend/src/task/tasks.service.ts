@@ -21,7 +21,7 @@ export class TasksService {
     @Inject(AppService)
     private readonly appService: AppService;
 
-    @Cron(CronExpression.EVERY_5_SECONDS)
+    @Cron(CronExpression.EVERY_MINUTE)
     async handleCron() {
         try {
             const { data } = await axios.get('https://finance.naver.com/marketindex/exchangeList.naver')
