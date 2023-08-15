@@ -1,6 +1,7 @@
 import axios from "axios";
 import { BrowserWindow, Menu, Tray, ipcMain, nativeImage } from "electron";
 import { getListConfiguration } from "./Store";
+import path from "path"
 
 let result = ` Loading...`;
 const getCurrency = () => {
@@ -24,9 +25,9 @@ const getCurrency = () => {
 };
 export const TrayEvent = (win: BrowserWindow) => {
     let tray: Tray;
-    const icon = nativeImage.createFromPath('./src/assets/IconTemplate.png');
+    const icon = nativeImage.createFromPath(path.join(__dirname, 'assets/IconTemplate.png'));
     tray = new Tray(icon);
-    tray.on('click', (event, bounds) => {
+    tray.on('click', (_, bounds) => {
         const { x, y } = bounds
         win.setPosition(x, y);
         if (!win.isVisible()) {
@@ -36,7 +37,7 @@ export const TrayEvent = (win: BrowserWindow) => {
         }
     });
 
-    tray.on('right-click', (event, bounds) => {
+    tray.on('right-click', (_, bounds) => {
         const { x, y } = bounds
         win.setPosition(x, y)
         const contextMenu = Menu.buildFromTemplate([

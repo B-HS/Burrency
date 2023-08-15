@@ -1,4 +1,4 @@
-import { BrowserWindow, app } from 'electron';
+import { BrowserWindow, app, nativeImage } from 'electron';
 import { IpcMainConfigurator } from './module/IpcMain';
 import { TrayEvent } from './module/Tray';
 
@@ -23,7 +23,7 @@ const createWindow = () => {
     IpcMainConfigurator(win);
     win.webContents.openDevTools();
 };
-
+app.dock.hide()
 app.on('ready', () => {
     createWindow();
     TrayEvent(win);
