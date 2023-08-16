@@ -2,6 +2,10 @@
 - 매번 네이버 들어가서 환율 치기 귀찮다 !!
 - Electron/NEST.js를 이용한 실시간 환율 어플리케이션
 
+# 포스팅
+1. [환율 앱을 만들어보자](https://hbyun.tistory.com/242)
+2. [React + Electron + Typescript을 시작해보자](https://hbyun.tistory.com/243) (토요일 업로드)
+
 # 목표
 - Docker배포가 가능한 Nest.js 백엔드
 - React + TS + Electron을 이용한 데스크톱 어플리케이션 작성
