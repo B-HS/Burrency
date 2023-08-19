@@ -4,7 +4,7 @@
 
 # 포스팅
 1. [환율 앱을 만들어보자](https://hbyun.tistory.com/242)
-2. [React + Electron + Typescript을 시작해보자](https://hbyun.tistory.com/243) (토요일 업로드)
+2. [React + Electron + Typescript을 시작해보자](https://hbyun.tistory.com/243)
 
 # 목표
 - Docker배포가 가능한 Nest.js 백엔드
