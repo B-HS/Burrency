@@ -20,7 +20,7 @@ const CurrencySelector = () => {
     }
 
     const initialize = () => {
-        window.app.currencyEventer((val: string[]) => setSelected(() => [...val]))
+        window.app.currencyEventer((val: string[]) => setSelected(() => Array.isArray(val) ? [...val] : []))
         window.app.getCurrency()
         setInit(false)
     }

@@ -1,8 +1,8 @@
 {
-  "name": "frontend",
-  "productName": "frontend",
+  "name": "burrency",
+  "productName": "burrency",
   "version": "1.0.0",
-  "description": "My Electron application description",
+  "description": "Realtime currency informer",
   "main": ".webpack/main",
   "scripts": {
     "start": "electron-forge start",

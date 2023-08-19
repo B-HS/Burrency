@@ -11,7 +11,6 @@ export const AppShow = (window: BrowserWindow) => ipcMain.on('appShow', () => {
         const data = res.data
         window.webContents.send("appShow", data);
     })
-
     app.show();
 });
 

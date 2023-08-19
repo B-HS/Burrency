@@ -6,10 +6,10 @@ import path from 'path'
 const ForkTsCheckerWebpackPlugin: typeof IForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 
 export const plugins = [
-  new ForkTsCheckerWebpackPlugin({
-    logger: 'webpack-infrastructure',
-  }),
-  new CopyPlugin({
-    patterns: [{ from: path.resolve(__dirname, 'src/assets'), to: path.resolve(__dirname, '.webpack/main/assets') }],
-  })
+    new ForkTsCheckerWebpackPlugin({
+        logger: 'webpack-infrastructure',
+    }),
+    new CopyPlugin({
+        patterns: [{ from: path.resolve(__dirname, 'src/assets'), to: path.resolve(__dirname, '.webpack/main/assets') }],
+    })
 ];

@@ -1,14 +1,23 @@
 import axios from "axios";
 import { BrowserWindow, Menu, Tray, ipcMain, nativeImage } from "electron";
+import path from "path";
 import { getListConfiguration } from "./Store";
-import path from "path"
 
-let result = ` Loading...`;
-const getCurrency = () => {
+const LOADING = ` Loading...`;
+let result = LOADING
+
+axios.interceptors.request.use((config) => {
+    result = LOADING
+    return config;
+}, (error) => {
+    result = ' Failed to get information from server.'
+    return Promise.reject(error);
+});
+
+const getInformation = (tray: Tray) => {
     axios.get('http://localhost:3000/last').then(res => {
         const data = res.data
         const savedList = getListConfiguration()
-
         if (savedList.length > 0) {
             const text = savedList.map((val) => {
                 if (data[0][val]) {
@@ -22,10 +31,12 @@ const getCurrency = () => {
             result = ` Please set the target currencies.`;
         }
     })
-};
-export const TrayEvent = (win: BrowserWindow) => {
+    tray.setTitle(result);
+}
+
+export const initTray = (win: BrowserWindow) => {
     let tray: Tray;
-    const icon = nativeImage.createFromPath(path.join(__dirname, 'assets/IconTemplate.png'));
+    const icon = nativeImage.createFromPath(path.join(__dirname, 'assets/IconTemplate.png'))
     tray = new Tray(icon);
     tray.on('click', (_, bounds) => {
         const { x, y } = bounds
@@ -50,10 +61,10 @@ export const TrayEvent = (win: BrowserWindow) => {
         ]);
         tray.popUpContextMenu(contextMenu);
     })
-
+    getInformation(tray)
     setInterval(() => {
-        getCurrency();
-        tray.setTitle(result);
+        getInformation(tray);
     }, 1000);
 
+    return tray
 }

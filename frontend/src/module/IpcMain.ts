@@ -11,4 +11,4 @@ const IpcMainConfigurator = (window: BrowserWindow) => {
     getCurrency(window)
 }
 
-export { IpcMainConfigurator }
+export { IpcMainConfigurator };
