@@ -4,7 +4,7 @@
 
 # 포스팅
 1. [환율 앱을 만들어보자](https://hbyun.tistory.com/242)
-2. [React + Electron + Typescript을 시작해보자](https://hbyun.tistory.com/243) (토요일 업로드)
+2. [React + Electron + Typescript을 시작해보자](https://hbyun.tistory.com/243)
 
 # 목표
 - Docker배포가 가능한 Nest.js 백엔드
@@ -20,6 +20,9 @@
 - MAC/WINDOW 환경 양쪽에서 돌아가는 환율 환경 구축
 - WINDOW는 될 지는 모르겠는데 일단 맥용으로 작업표시줄에 환율 바로 띄우기
 - 최대한 API KEY등을 사용하지 않고 구축
+
+# 수정사항
+- 로드 시에 로딩 유무를 판단 할 수있는 방법 마련
 
 # 진행 중
 - 일렉트론 : 차트
