@@ -7,7 +7,7 @@ export const AppClose = () => ipcMain.on('appClose', () => {
 });
 
 export const AppShow = (window: BrowserWindow) => ipcMain.on('appShow', () => {
-    axios.get('http://localhost:3000/range/7').then(res => {
+    axios.get(process.env.API_URL + '/range/7').then(res => {
         const data = res.data
         window.webContents.send("appShow", data);
     })

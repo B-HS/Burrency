@@ -15,7 +15,7 @@ axios.interceptors.request.use((config) => {
 });
 
 const getInformation = (tray: Tray) => {
-    axios.get('http://localhost:3000/last').then(res => {
+    axios.get(process.env.API_URL + '/last').then(res => {
         const data = res.data
         const savedList = getListConfiguration()
         if (savedList.length > 0) {

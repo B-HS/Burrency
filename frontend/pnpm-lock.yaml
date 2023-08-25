@@ -20,9 +20,9 @@ dependencies:
   axios:
     specifier: ^1.4.0
     version: 1.4.0
-  chart.js:
-    specifier: ^4.3.3
-    version: 4.3.3
+  dotenv:
+    specifier: ^16.3.1
+    version: 16.3.1
   electron-json-storage:
     specifier: ^4.6.0
     version: 4.6.0
@@ -41,9 +41,6 @@ dependencies:
   react:
     specifier: ^18.2.0
     version: 18.2.0
-  react-chartjs-2:
-    specifier: ^5.2.0
-    version: 5.2.0(chart.js@4.3.3)(react@18.2.0)
   react-dom:
     specifier: ^18.2.0
     version: 18.2.0(react@18.2.0)
@@ -70,6 +67,12 @@ devDependencies:
   '@electron-forge/plugin-webpack':
     specifier: ^6.2.1
     version: 6.2.1
+  '@electron/rebuild':
+    specifier: ^3.3.0
+    version: 3.3.0
+  '@types/electron-json-storage':
+    specifier: ^4.5.0
+    version: 4.5.0
   '@types/react':
     specifier: ^18.2.18
     version: 18.2.18
@@ -1302,7 +1305,7 @@ packages:
     engines: {node: '>= 14.17.5'}
     dependencies:
       '@electron-forge/shared-types': 6.2.1
-      '@electron/rebuild': 3.2.13
+      '@electron/rebuild': 3.3.0
       '@malept/cross-spawn-promise': 2.0.0
       chalk: 4.1.2
       debug: 4.3.4
@@ -1330,7 +1333,7 @@ packages:
       '@electron-forge/template-webpack': 6.2.1
       '@electron-forge/template-webpack-typescript': 6.2.1
       '@electron/get': 2.0.2
-      '@electron/rebuild': 3.2.13
+      '@electron/rebuild': 3.3.0
       '@malept/cross-spawn-promise': 2.0.0
       chalk: 4.1.2
       debug: 4.3.4
@@ -1486,7 +1489,7 @@ packages:
     resolution: {integrity: sha512-kLazG5XUAqb3Duyhq7XyGluINRwCQRaIiuvHwlvnZYYu6NZQTz9xUm6tQ9v05EtFblUx2iRjY67DJRZSt3dzTQ==}
     engines: {node: '>= 14.17.5'}
     dependencies:
-      '@electron/rebuild': 3.2.13
+      '@electron/rebuild': 3.3.0
       electron-packager: 17.1.1
       listr2: 5.0.8
     transitivePeerDependencies:
@@ -1612,8 +1615,8 @@ packages:
       - supports-color
     dev: true
 
-  /@electron/rebuild@3.2.13:
-    resolution: {integrity: sha512-DH9Ol4JCnHDYVOD0fKWq+Qqbn/0WU1O6QR0mIpMXEVU4YFM4PlaqNC9K36mGShNBxxGFotZCMDrB1wl/iHM12g==}
+  /@electron/rebuild@3.3.0:
+    resolution: {integrity: sha512-S1vgpzIOS1wCJmsYjdLz97MTUV6UTLcMk/HE3w90HYtVxvW+PQdwxLbgsrECX2bysqcnmM5a0K6mXj/gwVgYtQ==}
     engines: {node: '>=12.13.0'}
     hasBin: true
     dependencies:
@@ -1901,10 +1904,6 @@ packages:
       '@jridgewell/sourcemap-codec': 1.4.15
     dev: true
 
-  /@kurkle/color@0.3.2:
-    resolution: {integrity: sha512-fuscdXJ9G1qb7W8VdHi+IwRqij3lBkosAm4ydQtEmbY58OzHXqQhvlxqEkoz0yssNVn38bcpRWgA9PP+OGoisw==}
-    dev: false
-
   /@leichtgewicht/ip-codec@2.0.4:
     resolution: {integrity: sha512-Hcv+nVC0kZnQ3tD9GVu5xSMR4VVYOteQIr/hwFPVEvPdlXqgGEuRjiheChHgdM+JyqdgNcmzZOX/tnl0JOiI7A==}
     dev: true
@@ -2028,6 +2027,10 @@ packages:
     resolution: {integrity: sha512-cdeYyv4KWoEgpBISTxWvqYsVy444DOqehiF3fM3ne10AmJ62RSyNkUnxMJXHQWRQQX2eR94m5y1IZyDwBjV9FQ==}
     dependencies:
       '@types/node': 20.4.8
+    dev: true
+
+  /@types/electron-json-storage@4.5.0:
+    resolution: {integrity: sha512-wzDtkJHEENo4yLARfPjdYD6Foa7IORXFiNYLacZ6lJThkrGUWh5vlSSMu925ov5zv8tQHtajn2O7BpHcBtqU3g==}
     dev: true
 
   /@types/eslint-scope@3.7.4:
@@ -3043,13 +3046,6 @@ packages:
       supports-color: 7.2.0
     dev: true
 
-  /chart.js@4.3.3:
-    resolution: {integrity: sha512-aTk7pBw+x6sQYhon/NR3ikfUJuym/LdgpTlgZRe2PaEhjUMKBKyNaFCMVRAyTEWYFNO7qRu7iQVqOw/OqzxZxQ==}
-    engines: {pnpm: '>=7'}
-    dependencies:
-      '@kurkle/color': 0.3.2
-    dev: false
-
   /chokidar@3.5.3:
     resolution: {integrity: sha512-Dr3sfKRP6oTcjf2JmUmFJfeVMvXBdegxB0iVQ5eb2V10uFJUCAS8OByZdVAyVb8xXNz3GjjTgj9kLWsZTqE6kw==}
     engines: {node: '>= 8.10.0'}
@@ -3614,6 +3610,11 @@ packages:
       no-case: 3.0.4
       tslib: 2.6.1
     dev: true
+
+  /dotenv@16.3.1:
+    resolution: {integrity: sha512-IPzF4w4/Rd94bA9imS68tZBaYyBWSCE47V1RGuMrB94iyTOIEwRmVL2x/4An+6mETpLrKJ5hQkB8W4kFAadeIQ==}
+    engines: {node: '>=12'}
+    dev: false
 
   /eastasianwidth@0.2.0:
     resolution: {integrity: sha512-I88TYZWc9XiYHRQ4/3c5rjjfgkjhLyW2luGIheGERbNQ6OY7yTybanSpDXZa8y7VUP9YmDcYa+eyq4ca7iLqWA==}
@@ -6511,16 +6512,6 @@ packages:
     dependencies:
       cross-spawn-windows-exe: 1.2.0
     dev: true
-
-  /react-chartjs-2@5.2.0(chart.js@4.3.3)(react@18.2.0):
-    resolution: {integrity: sha512-98iN5aguJyVSxp5U3CblRLH67J8gkfyGNbiK3c+l1QI/G4irHMPQw44aEPmjVag+YKTyQ260NcF82GTQ3bdscA==}
-    peerDependencies:
-      chart.js: ^4.1.1
-      react: ^16.8.0 || ^17.0.0 || ^18.0.0
-    dependencies:
-      chart.js: 4.3.3
-      react: 18.2.0
-    dev: false
 
   /react-clientside-effect@1.2.6(react@18.2.0):
     resolution: {integrity: sha512-XGGGRQAKY+q25Lz9a/4EPqom7WRjz3z9R2k4jhVKA/puQFH/5Nt27vFZYql4m4NVNdUvX8PS3O7r/Zzm7cjUlg==}
