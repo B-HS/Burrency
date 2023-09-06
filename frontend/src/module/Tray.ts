@@ -1,9 +1,12 @@
 import axios from "axios";
+import { config } from 'dotenv';
 import { BrowserWindow, Menu, Tray, ipcMain, nativeImage } from "electron";
 import path from "path";
 import { getListConfiguration } from "./Store";
 
-const LOADING = ` Loading...`;
+config({ path: path.join(__dirname, 'assets/.env') })
+
+const LOADING = ` Loading...`
 let result = LOADING
 
 axios.interceptors.request.use((config) => {
@@ -32,6 +35,7 @@ const getInformation = (tray: Tray) => {
         }
     })
     tray.setTitle(result);
+    tray.setToolTip(result)
 }
 
 export const initTray = (win: BrowserWindow) => {

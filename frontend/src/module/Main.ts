@@ -16,5 +16,6 @@ export const initWindow = (win: BrowserWindow) => {
     });
     win.loadURL(MAIN_WINDOW_WEBPACK_ENTRY);
     IpcMainConfigurator(win);
+    win.webContents.openDevTools()
     return win
 };
