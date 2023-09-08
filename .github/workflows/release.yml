@@ -20,6 +20,8 @@ jobs:
     - uses: actions/setup-node@master
       with:
         node-version: 18
+    - name: move to frontend folder
+      run: cd frontend
     - name: install dependencies
       run: npm install
     - name: publish
