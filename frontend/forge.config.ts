@@ -23,7 +23,7 @@ const config: ForgeConfig = {
                     owner: 'B-HS',
                     name: 'Burrency'
                 },
-                prerelease: true
+                draft: true
             }
         }
     ],
