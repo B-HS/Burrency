@@ -8,7 +8,7 @@
 3. [실시간 환율 데스크톱 앱 - nestjs로 스케쥴러를 사용해보자](https://hbyun.tistory.com/244)<br>
 3+1. [실시간 환율 데스크톱 앱 - electron에서 dotenv를 사용해보자](https://hbyun.tistory.com/245)
 # 현재
-- 1.0 완성
+- 0.1 완성
 
 # 예정
 - 윈도우에서 빌드 후 실행했을때 tray.hide()에서 오류 발생
