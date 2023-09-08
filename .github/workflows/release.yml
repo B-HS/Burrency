@@ -21,7 +21,7 @@ jobs:
       with:
         node-version: 18
     - name: move to frontend folder
-      run: cd frontend
+      run: cd ./frontend
     - name: install dependencies
       run: npm install
     - name: publish
