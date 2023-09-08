@@ -1,7 +1,7 @@
 {
   "name": "burrency",
   "productName": "burrency",
-  "version": "0.1",
+  "version": "0.0.1",
   "description": "Realtime currency informer",
   "main": ".webpack/main",
   "scripts": {
