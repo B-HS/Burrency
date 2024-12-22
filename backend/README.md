@@ -1,18 +1,11 @@
-## Installation
-
-```bash
-$ pnpm install
+To install dependencies:
+```sh
+bun install
 ```
 
-## Running the app
-
-```bash
-# development
-$ pnpm run start
-
-# watch mode
-$ pnpm run start:dev
-
-# production mode
-$ pnpm run start:prod
+To run:
+```sh
+bun run dev
 ```
+
+open http://localhost:3000
