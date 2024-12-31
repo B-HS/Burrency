@@ -1,13 +1,22 @@
 {
   "name": "burrency-v2",
   "scripts": {
-    "dev": "bun run --hot src/index.ts"
+    "dev": "bun run --hot src/index.ts & bunx tailwindcss -i ./src/static/input.css -o ./src/static/output.css --watch --minify"
   },
   "dependencies": {
+    "dayjs": "^1.11.13",
+    "dotenv": "^16.4.7",
+    "drizzle-orm": "^0.38.3",
     "feconfig-bhs": "^1.0.7",
-    "hono": "^4.6.13"
+    "hono": "^4.6.13",
+    "mysql2": "^3.12.0",
+    "uuid": "^11.0.3"
   },
   "devDependencies": {
-    "@types/bun": "latest"
+    "@types/bun": "^1.1.14",
+    "drizzle-kit": "^0.30.1",
+    "tailwindcss": "^3.4.17",
+    "tsx": "^4.19.2",
+    "@types/uuid": "^10.0.0"
   }
 }
