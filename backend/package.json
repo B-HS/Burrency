@@ -10,6 +10,7 @@
     "feconfig-bhs": "^1.0.7",
     "hono": "^4.6.13",
     "mysql2": "^3.12.0",
+    "puppeteer": "^23.11.1",
     "uuid": "^11.0.3"
   },
   "devDependencies": {

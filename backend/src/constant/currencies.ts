@@ -1,4 +1,5 @@
 export const Currencies = [
+    'KRW',
     'USD',
     'EUR',
     'JPY',
@@ -6,59 +7,25 @@ export const Currencies = [
     'HKD',
     'TWD',
     'GBP',
-    'OMR',
     'CAD',
     'CHF',
     'SEK',
     'AUD',
     'NZD',
-    'CZK',
-    'CLP',
-    'TRY',
-    'MNT',
-    'ILS',
     'DKK',
-    'NOK',
-    'SAR',
-    'KWD',
-    'BHD',
     'AED',
-    'JOD',
-    'EGP',
     'THB',
     'SGD',
     'MYR',
     'IDR',
-    'QAR',
-    'KZT',
-    'BND',
     'INR',
     'PKR',
-    'BDT',
     'PHP',
-    'MXN',
     'BRL',
-    'VND',
-    'RUB',
-    'HUF',
-    'PLN',
-    'LKR',
-    'DZD',
-    'KES',
-    'COP',
-    'TZS',
-    'NPR',
-    'RON',
-    'LYD',
-    'MOP',
-    'MMK',
-    'ETB',
-    'UZS',
-    'KHR',
-    'FJD',
 ] as const
 
 export const CurrenciesMap = {
+    KRW: { EN: 'Korean Won', KO: '원', JP: '韓国ウォン' },
     USD: { EN: 'US Dollar', KO: '달러', JP: 'ドル' },
     EUR: { EN: 'Euro', KO: '유로', JP: 'ユーロ' },
     JPY: { EN: 'Japanese Yen', KO: '엔', JP: '円' },
@@ -66,57 +33,71 @@ export const CurrenciesMap = {
     HKD: { EN: 'Hong Kong Dollar', KO: '홍콩 달러', JP: '香港ドル' },
     TWD: { EN: 'New Taiwan Dollar', KO: '대만 달러', JP: 'ニュー台湾ドル' },
     GBP: { EN: 'British Pound', KO: '파운드', JP: 'ポンド' },
-    OMR: { EN: 'Omani Rial', KO: '오만 리알', JP: 'オマーン・リアル' },
     CAD: { EN: 'Canadian Dollar', KO: '캐나다 달러', JP: 'カナダドル' },
     CHF: { EN: 'Swiss Franc', KO: '스위스 프랑', JP: 'スイスフラン' },
     SEK: { EN: 'Swedish Krona', KO: '스웨덴 크로나', JP: 'スウェーデンクローナ' },
     AUD: { EN: 'Australian Dollar', KO: '호주 달러', JP: '豪ドル' },
     NZD: { EN: 'New Zealand Dollar', KO: '뉴질랜드 달러', JP: 'ニュージーランドドル' },
-    CZK: { EN: 'Czech Koruna', KO: '체코 코루나', JP: 'チェコ・コルナ' },
-    CLP: { EN: 'Chilean Peso', KO: '칠레 페소', JP: 'チリペソ' },
-    TRY: { EN: 'Turkish Lira', KO: '터키 리라', JP: 'トルコリラ' },
-    MNT: { EN: 'Mongolian Tögrög', KO: '몽골 투그릭', JP: 'モンゴルトゥグリク' },
-    ILS: { EN: 'Israeli New Shekel', KO: '이스라엘 셰켈', JP: 'イスラエル新シェケル' },
     DKK: { EN: 'Danish Krone', KO: '덴마크 크로네', JP: 'デンマーククローネ' },
-    NOK: { EN: 'Norwegian Krone', KO: '노르웨이 크로네', JP: 'ノルウェークローネ' },
-    SAR: { EN: 'Saudi Riyal', KO: '사우디 리얄', JP: 'サウジリヤル' },
-    KWD: { EN: 'Kuwaiti Dinar', KO: '쿠웨이트 디나르', JP: 'クウェート・ディナール' },
-    BHD: { EN: 'Bahraini Dinar', KO: '바레인 디나르', JP: 'バーレーン・ディナール' },
     AED: { EN: 'United Arab Emirates Dirham', KO: '아랍에미리트 디르함', JP: 'UAEディルハム' },
-    JOD: { EN: 'Jordanian Dinar', KO: '요르단 디나르', JP: 'ヨルダン・ディナール' },
-    EGP: { EN: 'Egyptian Pound', KO: '이집트 파운드', JP: 'エジプトポンド' },
     THB: { EN: 'Thai Baht', KO: '태국 바트', JP: 'タイバーツ' },
     SGD: { EN: 'Singapore Dollar', KO: '싱가포르 달러', JP: 'シンガポールドル' },
     MYR: { EN: 'Malaysian Ringgit', KO: '말레이시아 링깃', JP: 'マレーシアリンギット' },
     IDR: { EN: 'Indonesian Rupiah', KO: '인도네시아 루피아', JP: 'インドネシアルピア' },
-    QAR: { EN: 'Qatari Riyal', KO: '카타르 리얄', JP: 'カタールリヤル' },
-    KZT: { EN: 'Kazakhstani Tenge', KO: '카자흐스탄 텡게', JP: 'カザフスタンテンゲ' },
-    BND: { EN: 'Brunei Dollar', KO: '브루나이 달러', JP: 'ブルネイドル' },
     INR: { EN: 'Indian Rupee', KO: '인도 루피', JP: 'インドルピー' },
     PKR: { EN: 'Pakistani Rupee', KO: '파키스탄 루피', JP: 'パキスタンルピー' },
-    BDT: { EN: 'Bangladeshi Taka', KO: '방글라데시 타카', JP: 'バングラデシュタカ' },
     PHP: { EN: 'Philippine Peso', KO: '필리핀 페소', JP: 'フィリピンペソ' },
-    MXN: { EN: 'Mexican Peso', KO: '멕시코 페소', JP: 'メキシコペソ' },
     BRL: { EN: 'Brazilian Real', KO: '브라질 헤알', JP: 'ブラジルレアル' },
-    VND: { EN: 'Vietnamese Dong', KO: '베트남 동', JP: 'ベトナムドン' },
-    RUB: { EN: 'Russian Ruble', KO: '러시아 루블', JP: 'ロシアルーブル' },
-    HUF: { EN: 'Hungarian Forint', KO: '헝가리 포린트', JP: 'ハンガリーフォリント' },
-    PLN: { EN: 'Polish Zloty', KO: '폴란드 즈워티', JP: 'ポーランドズロチ' },
-    LKR: { EN: 'Sri Lankan Rupee', KO: '스리랑카 루피', JP: 'スリランカルピー' },
-    DZD: { EN: 'Algerian Dinar', KO: '알제리 디나르', JP: 'アルジェリアディナール' },
-    KES: { EN: 'Kenyan Shilling', KO: '케냐 실링', JP: 'ケニアシリング' },
-    COP: { EN: 'Colombian Peso', KO: '콜롬비아 페소', JP: 'コロンビアペソ' },
-    TZS: { EN: 'Tanzanian Shilling', KO: '탄자니아 실링', JP: 'タンザニアシリング' },
-    NPR: { EN: 'Nepalese Rupee', KO: '네팔 루피', JP: 'ネパールルピー' },
-    RON: { EN: 'Romanian Leu', KO: '루마니아 레우', JP: 'ルーマニアレウ' },
-    LYD: { EN: 'Libyan Dinar', KO: '리비아 디나르', JP: 'リビアディナール' },
-    MOP: { EN: 'Macanese Pataca', KO: '마카오 파타카', JP: 'マカオパタカ' },
-    MMK: { EN: 'Myanmar Kyat', KO: '미얀마 짯', JP: 'ミャンマーチャット' },
-    ETB: { EN: 'Ethiopian Birr', KO: '에티오피아 비르', JP: 'エチオピアブル' },
-    UZS: { EN: 'Uzbekistani Som', KO: '우즈베키스탄 솜', JP: 'ウズベキスタンソム' },
-    KHR: { EN: 'Cambodian Riel', KO: '캄보디아 리엘', JP: 'カンボジアリエル' },
-    FJD: { EN: 'Fijian Dollar', KO: '피지 달러', JP: 'フィジードル' },
 } as const
 
-export type CurrencyCode = keyof typeof CurrenciesMap
-export type CurrencyTranslations = (typeof CurrenciesMap)[CurrencyCode]
+export const CurrencyUnits = {
+    USD: 1,
+    KRW: 1000,
+    JPY: 100,
+    CNY: 1,
+    EUR: 1,
+    GBP: 1,
+    HKD: 1,
+    TWD: 1,
+    CAD: 1,
+    CHF: 1,
+    AUD: 1,
+    NZD: 1,
+    SGD: 1,
+    INR: 1,
+    SEK: 1,
+    DKK: 1,
+    BRL: 1,
+    MYR: 1,
+    THB: 1,
+    IDR: 100,
+    PHP: 1,
+    PKR: 1,
+    AED: 1,
+}
+
+export const normalizationCurrencyFactors = {
+    KRW: 1000, // Korean Won (based on 1000 KRW)
+    JPY: 1, // Japanese Yen (based on 1 JPY)
+    USD: 1, // US Dollar (based on 1 USD)
+    EUR: 1, // Euro (based on 1 EUR)
+    CNY: 1, // Chinese Yuan (based on 1 CNY)
+    HKD: 1, // Hong Kong Dollar (based on 1 HKD)
+    TWD: 1, // Taiwan Dollar (based on 1 TWD)
+    GBP: 1, // British Pound (based on 1 GBP)
+    CAD: 1, // Canadian Dollar (based on 1 CAD)
+    CHF: 1, // Swiss Franc (based on 1 CHF)
+    SEK: 1, // Swedish Krona (based on 1 SEK)
+    AUD: 1, // Australian Dollar (based on 1 AUD)
+    NZD: 1, // New Zealand Dollar (based on 1 NZD)
+    DKK: 1, // Danish Krone (based on 1 DKK)
+    AED: 1, // UAE Dirham (based on 1 AED)
+    THB: 1, // Thai Baht (based on 1 THB)
+    SGD: 1, // Singapore Dollar (based on 1 SGD)
+    MYR: 1, // Malaysian Ringgit (based on 1 MYR)
+    IDR: 1, // Indonesian Rupiah (based on 1 IDR)
+    INR: 1, // Indian Rupee (based on 1 INR)
+    PKR: 1, // Pakistani Rupee (based on 1 PKR)
+    PHP: 1, // Philippine Peso (based on 1 PHP)
+    BRL: 1, // Brazilian Real (based on 1 BRL)
+}

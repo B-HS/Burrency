@@ -1,6 +1,7 @@
+import { CurrencyCode, CurrencyRates } from '@src/types'
 import { html } from 'hono/html'
 import { FC } from 'hono/jsx'
-import { CurrencyTable } from './components/currency-table'
+import { CurrencyTable } from './components'
 
 const Layout: FC = (props) => html`
     <!DOCTYPE html>
@@ -14,15 +15,15 @@ const Layout: FC = (props) => html`
             <meta charset="UTF-8" />
             <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         </head>
-        <body>
+        <body class="antialiased">
             ${props.children}
         </body>
     </html>
 `
-const CurrencyPage: FC<{ lang: 'EN' | 'KO' | 'JP'; data: Record<string, string> }> = ({ lang, data }) => {
+const CurrencyPage: FC<{ lang: 'EN' | 'KO' | 'JP'; data: CurrencyRates; base: CurrencyCode }> = ({ lang, data, base }) => {
     return (
         <Layout>
-            <CurrencyTable data={data} lang={lang} />
+            <CurrencyTable data={data} lang={lang} base={base} />
         </Layout>
     )
 }
