@@ -46,6 +46,7 @@ jobs:
           key: ${{ secrets.PEM_KEY }}
           source: "./${{ env.PROJECT_NAME }}.tar"
           target: "/home/${{ env.PROJECT_NAME }}"
+          debug: true
 
       - name: Transfer docker-compose.yml to remote server
         uses: appleboy/scp-action@v0.1.3
