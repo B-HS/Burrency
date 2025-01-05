@@ -5,7 +5,7 @@ WORKDIR /usr/src/app
 COPY backend ./
 
 # Install dependencies
-RUN bun install --frozen-lockfile --production
+RUN bun install
 
 # Set environment variable
 ENV NODE_ENV=production
