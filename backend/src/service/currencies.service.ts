@@ -80,3 +80,15 @@ export const getCurrenciesFromServer = async () => {
         return {} as CurrencyRates
     }
 }
+
+export const getLatestUpdateRecord = async () => {
+    try {
+        return db.select().from(master_record).orderBy(desc(master_record.created_at)).limit(1).execute()
+    } catch (error) {
+        console.log('====================================')
+        console.error('[Error in GetLatestUpdateRecord]')
+        console.error(error)
+        console.log('====================================')
+        return {} as CurrencyRates
+    }
+}

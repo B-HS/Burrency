@@ -3,11 +3,18 @@ import { CurrencyCode, CurrencyRates } from '@src/types'
 import type { FC } from 'hono/jsx'
 import { CurrencyFlags } from './flags'
 import { GitHubLogo } from './github'
+import dayjs = require('dayjs')
 
 type CurrencyTableProps = {
     data: CurrencyRates
     lang: 'EN' | 'KO' | 'JP'
     base: CurrencyCode
+    latestUpdate:
+        | {
+              MASTER_RECORD_ID: number
+              InsertedID: string
+              created_at: Date | null
+          }[]
 }
 
 const LANG_MAP = (BASE?: CurrencyCode) => ({
@@ -17,6 +24,11 @@ const LANG_MAP = (BASE?: CurrencyCode) => ({
         EN: ['Country', 'Unit', 'Price'],
         KO: ['국가', '단위', '가격'],
         JP: ['国', '単位', '価格'],
+    },
+    TEXT_LATEST_UPDATE: {
+        EN: 'Latest Update ##STRING##',
+        KO: '최근 업데이트 ##STRING##',
+        JP: '最新の更新 ##STRING##',
     },
     TEXT_BASED_ON: {
         EN: (
@@ -53,9 +65,20 @@ const transformRatesByBaseCurrency = (rates: CurrencyRates, baseCurrency: Curren
     ) as CurrencyRates
 }
 
-export const CurrencyTable: FC<CurrencyTableProps> = ({ data: rawData, lang = 'KO', base }) => {
+export const CurrencyTable: FC<CurrencyTableProps> = ({ data: rawData, lang = 'KO', base, latestUpdate }) => {
     const data = transformRatesByBaseCurrency(rawData, base)
 
+    const options = {
+        timeZone: 'Asia/Seoul',
+        year: 'numeric' as 'numeric',
+        month: '2-digit' as '2-digit',
+        day: '2-digit' as '2-digit',
+        hour: '2-digit' as '2-digit',
+        minute: '2-digit' as '2-digit',
+        second: '2-digit' as '2-digit',
+        hour12: false,
+    }
+    console.log(new Intl.DateTimeFormat('en-US', options).format(new Date(dayjs(latestUpdate.at(0)?.created_at).subtract(9, 'hour').toDate())))
     return (
         <section className='max-w-screen-sm container mx-auto p-10'>
             <section className='flex flex-col gap-2 py-2'>
@@ -70,6 +93,7 @@ export const CurrencyTable: FC<CurrencyTableProps> = ({ data: rawData, lang = 'K
                         {Object.entries(LANG_MAP().LANG_BTN).map(([key, label]) => (
                             <a
                                 key={key}
+                                aria-label="BHS's GitHub"
                                 href={`/?lang=${key.toLowerCase()}&base=${base || 'KRW'}`}
                                 className='text-xs p-0.5 px-1 border rounded hover:bg-neutral-200 transition-all'>
                                 {label}
@@ -80,6 +104,7 @@ export const CurrencyTable: FC<CurrencyTableProps> = ({ data: rawData, lang = 'K
                 <section className='text-xs text-neutral-500 font-medium'>
                     <p>- {LANG_MAP(CurrenciesMap[base][lang] as CurrencyCode).TEXT_BASED_ON[lang]}</p>
                     <p>- {LANG_MAP().TEXT_EXPLAINATION_1[lang]}</p>
+                    <p>- {LANG_MAP().TEXT_LATEST_UPDATE[lang].replace('##STRING##', new Date().toLocaleString())}</p>
                 </section>
             </section>
             <table className='min-w-full divide-y divide-gray-200 dark:divide-neutral-700'>

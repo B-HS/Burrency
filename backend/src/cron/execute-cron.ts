@@ -1,10 +1,12 @@
+import { getCurrenciesFromServer } from '@src/service'
+
 let intervalIds: NodeJS.Timer[] = []
 
 const requestGetCurrencies = async ({ interval = 1000 }: { interval?: number }) => {
     try {
         stopCronjob()
         const intervalId: NodeJS.Timer = setInterval(() => {
-            console.log('Hello')
+            getCurrenciesFromServer()
         }, interval)
         intervalIds.push(intervalId)
     } catch (error) {

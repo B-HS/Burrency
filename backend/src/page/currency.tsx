@@ -2,6 +2,7 @@ import { CurrencyCode, CurrencyRates } from '@src/types'
 import { html } from 'hono/html'
 import { FC } from 'hono/jsx'
 import { CurrencyTable } from './components'
+import { getLatestUpdateRecord } from '@src/service'
 
 const Layout: FC = (props) => html`
     <!DOCTYPE html>
@@ -21,10 +22,20 @@ const Layout: FC = (props) => html`
         </body>
     </html>
 `
-const CurrencyPage: FC<{ lang: 'EN' | 'KO' | 'JP'; data: CurrencyRates; base: CurrencyCode }> = ({ lang, data, base }) => {
+const CurrencyPage: FC<{
+    lang: 'EN' | 'KO' | 'JP'
+    data: CurrencyRates
+    base: CurrencyCode
+    latestUpdate:
+        | {
+              MASTER_RECORD_ID: number
+              InsertedID: string
+              created_at: Date | null
+          }[]
+}> = ({ lang, data, base, latestUpdate }) => {
     return (
         <Layout>
-            <CurrencyTable data={data} lang={lang} base={base} />
+            <CurrencyTable data={data} lang={lang} base={base} latestUpdate={latestUpdate} />
         </Layout>
     )
 }
