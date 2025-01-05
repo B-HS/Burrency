@@ -8,6 +8,6 @@ RouterInitializer(app)
 InitializePages(app)
 
 export default {
-    port: 25252,
+    port: 31513,
     fetch: app.fetch,
 }
