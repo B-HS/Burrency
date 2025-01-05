@@ -27,7 +27,7 @@ export const getCurrenciesFromServer = async () => {
 
             return Object.keys(result)
                 .slice(1)
-                .reduce((prev, next) => ({ ...prev, [next.split('CURRENCY_')[1]]: Number(result[next].Value) }), {}) as CurrencyRates
+                .reduce((prev, next) => ({ ...prev, [next.split('CURRENCY_')[1]]: Number(result[next||'KRW'].Value) }), {}) as CurrencyRates
         } else {
             const baseCurrency = 'KRW'
             const fetchCurrency = async (currency: string) => {

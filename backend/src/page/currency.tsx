@@ -2,14 +2,17 @@ import { CurrencyCode, CurrencyRates } from '@src/types'
 import { html } from 'hono/html'
 import { FC } from 'hono/jsx'
 import { CurrencyTable } from './components'
-import { getLatestUpdateRecord } from '@src/service'
+import fs = require('fs')
+import path = require('path')
 
 const Layout: FC = (props) => html`
     <!DOCTYPE html>
     <html lang="en">
         <head>
-            <link rel="stylesheet" href="/static/output.css" />
             <title>Burrency</title>
+            <style>
+                ${fs.readFileSync(path.resolve('./src/static/output.css'), 'utf8')}
+            </style>
             <meta name="description" content="Currency Exchange Rates" />
             <meta name="author" content="B-HS" />
             <meta name="keywords" content="currency, exchange, rates" />
