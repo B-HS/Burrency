@@ -14,6 +14,7 @@ const Layout: FC = (props) => html`
             <meta name="keywords" content="currency, exchange, rates" />
             <meta charset="UTF-8" />
             <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+            <link rel="icon" href="https://blog.gumyo.net/favicon.ico" type="image/x-icon" sizes="64x64" />
         </head>
         <body class="antialiased">
             ${props.children}
