@@ -11,7 +11,9 @@
     "hono": "^4.6.13",
     "mysql2": "^3.12.0",
     "puppeteer": "^23.11.1",
-    "uuid": "^11.0.3"
+    "stream": "^0.0.3",
+    "uuid": "^11.0.3",
+    "zlib": "^1.0.5"
   },
   "devDependencies": {
     "@types/bun": "^1.1.14",
