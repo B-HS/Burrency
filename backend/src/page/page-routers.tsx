@@ -10,6 +10,6 @@ export const InitializePages = (app: Hono) => {
         const lang = String(c.req.query('lang') || 'EN').toUpperCase() as 'EN' | 'KO' | 'JP'
         const baseCurrency = String(c.req.query('base') || 'KRW').toUpperCase() as CurrencyCode
         const data = await getCurrenciesFromServer()
-        return c.html(<CurrencyPage data={{ ...data, KRW: 1000 }} lang={lang} base={baseCurrency} />)
+        return c.html(<CurrencyPage data={{ ...data, KRW: 1 }} lang={lang} base={baseCurrency} />)
     })
 }

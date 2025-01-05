@@ -41,7 +41,6 @@ export const getCurrenciesFromServer = async () => {
             const currencyPromises = Currencies.map((currency) => fetchCurrency(currency).then((price) => ({ [currency]: price })))
             const results = await Promise.all(currencyPromises)
             const parsedData = results.reduce((acc, cur) => ({ ...acc, ...cur }), {}) as CurrenciesList
-            
 
             const [MASTER_RECORD] = await db
                 .insert(master_record)
@@ -51,10 +50,11 @@ export const getCurrenciesFromServer = async () => {
                 .$returningId()
                 .execute()
 
+            const convertedData = {} as CurrencyRates
             await Promise.all(
                 Object.keys(parsedData).map(async (currencyKey) => {
                     const Value = Number(String(parsedData[currencyKey as keyof typeof parsedData]).replaceAll(',', ''))
-
+                    Object.assign(convertedData, { [currencyKey]: Value })
                     return (
                         currencyKey !== 'KRW' &&
                         db.insert(CurrencyTables[currencyKey as CurrencyCode]).values([
