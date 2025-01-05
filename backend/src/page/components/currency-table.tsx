@@ -118,7 +118,7 @@ export const CurrencyTable: FC<CurrencyTableProps> = ({ data: rawData, lang = 'K
                             {LANG_MAP().HEADERS[lang].map((header) => (
                                 <th
                                     key={header}
-                                    className='px-6 py-3 text-left text-xs font-medium text-neutral-500 dark:text-neutral-300 tracking-wider'>
+                                    className='px-6 py-3 text-left text-xs font-medium text-neutral-700 dark:text-neutral-200 tracking-wider'>
                                     {header}
                                 </th>
                             ))}
