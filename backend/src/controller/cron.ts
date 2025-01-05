@@ -6,7 +6,7 @@ const MINUTE = 60 * SECOND
 
 export const CronController = (app: Hono) => {
     app.get('/start-currency-cron', async (c) => {
-        startCronjob({ currency: MINUTE })
+        startCronjob({ currency: MINUTE/2 })
         return c.text('Cronjob started')
     })
 

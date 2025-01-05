@@ -1,12 +1,17 @@
 import { getCurrenciesFromServer } from '@src/service'
-
+let intervalMap = {
+    GET_CURRENCY: false,
+}
 let intervalIds: NodeJS.Timer[] = []
 
 const requestGetCurrencies = async ({ interval = 1000 }: { interval?: number }) => {
+    await getCurrenciesFromServer()
+    if (intervalMap.GET_CURRENCY) return
+    intervalMap.GET_CURRENCY = true
     try {
-        stopCronjob()
-        const intervalId: NodeJS.Timer = setInterval(() => {
-            getCurrenciesFromServer()
+        const intervalId: NodeJS.Timer = setInterval(async () => {
+            await getCurrenciesFromServer()
+            console.log('[BURRENCY] Currencies updated' + new Date().toISOString())
         }, interval)
         intervalIds.push(intervalId)
     } catch (error) {
@@ -16,6 +21,7 @@ const requestGetCurrencies = async ({ interval = 1000 }: { interval?: number }) 
 }
 
 export const startCronjob = ({ currency }: { currency: number }) => {
+    console.log('[BURRENCY] Starting cronjob')
     requestGetCurrencies({ interval: currency })
 }
 
