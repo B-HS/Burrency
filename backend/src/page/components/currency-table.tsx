@@ -78,7 +78,9 @@ export const CurrencyTable: FC<CurrencyTableProps> = ({ data: rawData, lang = 'K
         second: '2-digit' as '2-digit',
         hour12: false,
     }
-    console.log(new Intl.DateTimeFormat('en-US', options).format(new Date(dayjs(latestUpdate.at(0)?.created_at).subtract(9, 'hour').toDate())))
+    const latestUpdateDate = new Intl.DateTimeFormat('en-US', options).format(
+        new Date(dayjs(latestUpdate.at(0)?.created_at).subtract(9, 'hour').toDate()),
+    )
     return (
         <section className='max-w-screen-sm container mx-auto p-10'>
             <section className='flex flex-col gap-2 py-2'>
@@ -104,7 +106,7 @@ export const CurrencyTable: FC<CurrencyTableProps> = ({ data: rawData, lang = 'K
                 <section className='text-xs text-neutral-500 font-medium'>
                     <p>- {LANG_MAP(CurrenciesMap[base][lang] as CurrencyCode).TEXT_BASED_ON[lang]}</p>
                     <p>- {LANG_MAP().TEXT_EXPLAINATION_1[lang]}</p>
-                    <p>- {LANG_MAP().TEXT_LATEST_UPDATE[lang].replace('##STRING##', new Date().toLocaleString())}</p>
+                    <p>- {LANG_MAP().TEXT_LATEST_UPDATE[lang].replace('##STRING##', latestUpdateDate)}</p>
                 </section>
             </section>
             <table className='min-w-full divide-y divide-gray-200 dark:divide-neutral-700'>
