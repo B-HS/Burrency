@@ -1,6 +1,5 @@
 import { Currencies, CurrenciesMap } from '@src/constant'
 import { CurrencyCode, CurrencyRates } from '@src/types'
-import 'flag-icons/css/flag-icons.min.css'
 import type { FC } from 'hono/jsx'
 import { CurrencyFlags } from './flags'
 import { GitHubLogo } from './github'
