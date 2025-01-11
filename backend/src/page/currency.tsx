@@ -4,7 +4,6 @@ import { FC } from 'hono/jsx'
 import { CurrencyTable } from './components'
 import fs = require('fs')
 import path = require('path')
-
 const Layout: FC = (props) => html`
     <!DOCTYPE html>
     <html lang="en">

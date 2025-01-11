@@ -81,15 +81,16 @@ export const CurrencyTable: FC<CurrencyTableProps> = ({ data: rawData, lang = 'K
     const latestUpdateDate = new Intl.DateTimeFormat('en-US', options).format(
         new Date(dayjs(latestUpdate.at(0)?.created_at).subtract(9, 'hour').toDate()),
     )
+
     return (
         <section className='max-w-screen-sm container mx-auto p-10'>
-            <section className='bg-white dark:bg-neutral-800 shadow-sm rounded p-3 mb-3 border'>
+            <section className='bg-white shadow-sm rounded p-3 mb-3 border'>
                 <header className='flex flex-col justify-between items-start mb-3 gap-2'>
                     <section className='flex items-center gap-4 mb-4 sm:mb-0'>
-                        <h1 className='text-2xl font-semibold text-neutral-900 dark:text-white'>{LANG_MAP().TITLE[lang]}</h1>
+                        <h1 className='text-2xl font-semibold text-neutral-900 '>{LANG_MAP().TITLE[lang]}</h1>
                         <a
                             href='https://github.com/B-HS'
-                            className='text-neutral-600 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-white transition-colors duration-200'
+                            className='text-neutral-600 hover:text-neutral-900 transition-colors duration-200'
                             aria-label="BHS's GitHub">
                             <GitHubLogo width={24} />
                         </a>
@@ -99,41 +100,39 @@ export const CurrencyTable: FC<CurrencyTableProps> = ({ data: rawData, lang = 'K
                             <a
                                 key={key}
                                 href={`/?lang=${key.toLowerCase()}&base=${base || 'KRW'}`}
-                                className='text-xs px-3 py-1 border border-neutral-300 dark:border-neutral-600 rounded text-neutral-700 dark:text-neutral-300 hover:bg-neutral-100 dark:hover:bg-neutral-700 transition-all duration-200'>
+                                className='text-xs px-3 py-1 border border-neutral-300 rounded text-neutral-700 hover:bg-neutral-100 transition-all duration-200'>
                                 {label}
                             </a>
                         ))}
                     </nav>
                 </header>
-                <section className='text-sm text-neutral-600 dark:text-neutral-400 space-y-2'>
+                <section className='text-sm text-neutral-600 space-y-2'>
                     <p>- {LANG_MAP(CurrenciesMap[base][lang] as CurrencyCode).TEXT_BASED_ON[lang]}</p>
                     <p>- {LANG_MAP().TEXT_EXPLAINATION_1[lang]}</p>
                     <p>- {LANG_MAP().TEXT_LATEST_UPDATE[lang].replace('##STRING##', latestUpdateDate)}</p>
                 </section>
             </section>
-            <div className='overflow-x-auto bg-white dark:bg-neutral-800 shadow-sm rounded border'>
-                <table className='min-w-full divide-y divide-neutral-200 dark:divide-neutral-700'>
-                    <thead className='bg-neutral-100 dark:bg-neutral-700 border-b'>
+            <div className='overflow-x-auto bg-white shadow-sm rounded border'>
+                <table className='min-w-full divide-y divide-neutral-200'>
+                    <thead className='bg-neutral-100'>
                         <tr>
                             {LANG_MAP().HEADERS[lang].map((header) => (
-                                <th
-                                    key={header}
-                                    className='px-6 py-3 text-left text-xs font-medium text-neutral-700 dark:text-neutral-200 tracking-wider'>
+                                <th key={header} className='px-6 py-3 text-left text-xs font-medium text-neutral-700 tracking-wider'>
                                     {header}
                                 </th>
                             ))}
                         </tr>
                     </thead>
-                    <tbody className='bg-white dark:bg-neutral-800 divide-y divide-neutral-200 dark:divide-neutral-700 border-collapse border-neutral-200 dark:border-neutral-700'>
+                    <tbody className='bg-white divide-y divide-neutral-200 border-collapse border-neutral-200 '>
                         {Object.entries(data).map(([key, value]) => (
-                            <tr key={key} className='hover:bg-neutral-50 dark:hover:bg-neutral-700 transition-colors duration-200 border-b'>
+                            <tr key={key} className='hover:bg-neutral-50 transition-colors duration-200 border-b'>
                                 <td className='px-6 py-4 whitespace-nowrap'>
                                     <div className='flex items-center gap-2'>
                                         <div className='aspect-[4/3] w-8 rounded-sm'>{CurrencyFlags[key as keyof typeof CurrencyFlags]()}</div>
-                                        <div className='text-sm font-medium text-neutral-900 dark:text-white'>
+                                        <div className='text-sm font-medium text-neutral-900'>
                                             <a
                                                 href={`/?lang=${lang.toLowerCase()}&base=${key}`}
-                                                className='hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200'>
+                                                className='hover:text-blue-600 transition-colors duration-200'>
                                                 {CurrenciesMap[key as keyof typeof CurrenciesMap][lang]}
                                             </a>
                                         </div>
@@ -142,14 +141,14 @@ export const CurrencyTable: FC<CurrencyTableProps> = ({ data: rawData, lang = 'K
                                 <td className='px-6 py-4 whitespace-nowrap'>
                                     <a
                                         href={`/?lang=${lang.toLowerCase()}&base=${key}`}
-                                        className='text-sm text-neutral-700 dark:text-neutral-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200'>
+                                        className='text-sm text-neutral-700 hover:text-blue-600 transition-colors duration-200'>
                                         {key}
                                     </a>
                                 </td>
                                 <td className='px-6 py-4 whitespace-nowrap'>
                                     <a
                                         href={`/?lang=${lang.toLowerCase()}&base=${key}`}
-                                        className='text-sm text-neutral-700 dark:text-neutral-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200'>
+                                        className='text-sm text-neutral-700 hover:text-blue-600 transition-colors duration-200'>
                                         {+value.toFixed(5)}
                                     </a>
                                 </td>
